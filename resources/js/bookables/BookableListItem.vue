@@ -1,0 +1,19 @@
+<template>
+    <div>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ itemTitle }}</h5>
+                  <P>{{ itemContent}}</P>
+            </div>
+        </div>
+
+
+    </div>
+</template>
+<script>
+export default {
+ props:{"itemTitle":String,"itemContent":String,"price":Number},
+
+};
+
+</script>
