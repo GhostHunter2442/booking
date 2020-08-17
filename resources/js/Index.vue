@@ -10,7 +10,7 @@
                       <router-link class="nav-link" :to="{name: 'home'}">Home</router-link>
                     </li>
                     <li class="nav-item">
-                       <router-link class="nav-link" :to="{name : 'second'}">Second</router-link>
+                       <router-link class="nav-link" :to="{name : 'bookable'}">Second</router-link>
                     </li>
 
                 </ul>
