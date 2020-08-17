@@ -1939,7 +1939,7 @@ __webpack_require__.r(__webpack_exports__);
 
     this.loading = true;
     axios.get("/api/bookables/".concat(this.$route.params.id)).then(function (resp) {
-      _this.bookable = resp.data;
+      _this.bookable = resp.data.data;
       _this.loading = false;
     });
   }
@@ -2039,18 +2039,9 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    this.loading = true; // const p =new Promise((resolve, reject)=>{
-    //         console.log(resolve);
-    //         console.log(reject);
-    //         setTimeout(() => resolve("Hello"), 3000);
-    // })
-    //    .then(result => "Hello_again"+' '+result)
-    //    .then(result =>console.log(result))
-    //   .catch(result => console.log(`Error ${result}`));
-    // console.log(p);
-
+    this.loading = true;
     var request = axios.get("/api/bookables").then(function (resp) {
-      _this.bookables = resp.data;
+      _this.bookables = resp.data.data;
 
       _this.bookables.push({
         title: "x",

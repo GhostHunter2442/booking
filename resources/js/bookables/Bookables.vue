@@ -47,19 +47,10 @@ methods:{
 },
     created() {
         this.loading = true;
-        // const p =new Promise((resolve, reject)=>{
-        //         console.log(resolve);
-        //         console.log(reject);
-        //         setTimeout(() => resolve("Hello"), 3000);
-        // })
-        //    .then(result => "Hello_again"+' '+result)
-        //    .then(result =>console.log(result))
-        //   .catch(result => console.log(`Error ${result}`));
-        // console.log(p);
 
          const request =  axios.get("/api/bookables")
                          .then(resp => {
-                             this.bookables = resp.data;
+                             this.bookables = resp.data.data;
                              this.bookables.push({title:"x",description:"X"});
                              this.loading= false;
                           });
