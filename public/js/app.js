@@ -2108,13 +2108,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 // import moment from "moment";
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -2278,8 +2271,9 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     halfStar: function halfStar() {
-      var fraction = this.rating - Math.floor(this.rating);
-      console.log(fraction);
+      var fraction = Math.round((this.rating - Math.floor(this.rating)) * 100); // console.log(fraction);
+
+      return fraction > 0 && fraction < 50;
     },
     fullStars: function fullStars() {
       // > 4.5 = 5  stars
@@ -2290,15 +2284,16 @@ __webpack_require__.r(__webpack_exports__);
       // if rating would be1.9 ,ceil(1.9)= 2 ,5-2 =3 ,reder 3 empty stars
       return 5 - Math.ceil(this.rating);
     }
-  },
-  created: function created() {
-    var number = [0.9, 4.0, 4.4, 4.5, 4.6, 4.9]; // number.forEach(n =>{
-    //     console.log(`round for ${n} is ${Math.round(n)}`);
-    //     console.log(`floor for ${n} is ${Math.floor(n)}`);
-    //     console.log(`ceil for ${n} is ${Math.ceil(n)}`);
-    //     console.log('=====================================');
-    // });
-  }
+  } // created() {
+  //     const number =[0.9,4.0,4.4,4.5,4.6,4.9];
+  //     number.forEach(n =>{
+  //         console.log(`round for ${n} is ${Math.round(n)}`);
+  //         console.log(`floor for ${n} is ${Math.floor(n)}`);
+  //         console.log(`ceil for ${n} is ${Math.ceil(n)}`);
+  //         console.log('=====================================');
+  //     });
+  // },
+
 });
 
 /***/ }),
@@ -60041,86 +60036,61 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticStyle: { padding: "1.25rem" } },
-    [
-      _c(
-        "h5",
-        {
-          staticClass: "text-uppercase text-secondary font-weight-border pt-4"
-        },
-        [_vm._v("Review List")]
-      ),
-      _vm._v(" "),
-      _c("star-rating", { attrs: { rating: 4.0 } }),
-      _vm._v(" "),
-      _c("star-rating", { attrs: { rating: 4.4 } }),
-      _vm._v(" "),
-      _c("star-rating", { attrs: { rating: 4.5 } }),
-      _vm._v(" "),
-      _c("star-rating", { attrs: { rating: 4.6 } }),
-      _vm._v(" "),
-      _c("star-rating", { attrs: { rating: 0.9 } }),
-      _vm._v(" "),
-      _c("star-rating", { attrs: { rating: 3.2 } }),
-      _vm._v(" "),
-      _c("star-rating", { attrs: { rating: 3.5 } }),
-      _vm._v(" "),
-      _c("star-rating", { attrs: { rating: 3.7 } }),
-      _vm._v(" "),
-      _vm.loading
-        ? _c("div", [_vm._v("Loading...")])
-        : _c(
-            "div",
-            _vm._l(_vm.reviews, function(review, index) {
-              return _c(
-                "div",
-                { key: index, staticClass: "border-bottom d-none d-md-block" },
-                [
-                  _c("div", { staticClass: "row pt-4" }, [
-                    _c("div", { staticClass: "col-md-6" }, [
-                      _vm._v("Piort Jura")
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "col-md-6 d-flex justify-content-end" },
-                      [
-                        _vm._v(
-                          "\n                " +
-                            _vm._s(review.rating) +
-                            "\n                "
-                        ),
-                        _c("star-rating", { attrs: { rating: review.rating } })
-                      ],
-                      1
-                    )
+  return _c("div", { staticStyle: { padding: "1.25rem" } }, [
+    _c(
+      "h5",
+      { staticClass: "text-uppercase text-secondary font-weight-border pt-4" },
+      [_vm._v("Review List")]
+    ),
+    _vm._v(" "),
+    _vm.loading
+      ? _c("div", [_vm._v("Loading...")])
+      : _c(
+          "div",
+          _vm._l(_vm.reviews, function(review, index) {
+            return _c(
+              "div",
+              { key: index, staticClass: "border-bottom d-none d-md-block" },
+              [
+                _c("div", { staticClass: "row pt-4" }, [
+                  _c("div", { staticClass: "col-md-6" }, [
+                    _vm._v("Piort Jura")
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "row" }, [
-                    _c("div", { staticClass: "col-md-12" }, [
-                      _vm._v(_vm._s(_vm._f("fromNow")(review.created_at)))
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "row pt-4 pb-4" }, [
-                    _c("div", { staticClass: "col-md-12" }, [
-                      _vm._v(
-                        "\n                " +
-                          _vm._s(review.content) +
-                          "\n            "
-                      )
-                    ])
+                  _c(
+                    "div",
+                    { staticClass: "col-md-6 d-flex justify-content-end" },
+                    [
+                      _c("star-rating", {
+                        staticClass: "fa-lg",
+                        attrs: { rating: review.rating }
+                      })
+                    ],
+                    1
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col-md-12" }, [
+                    _vm._v(_vm._s(_vm._f("fromNow")(review.created_at)))
                   ])
-                ]
-              )
-            }),
-            0
-          )
-    ],
-    1
-  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "row pt-4 pb-4" }, [
+                  _c("div", { staticClass: "col-md-12" }, [
+                    _vm._v(
+                      "\n                " +
+                        _vm._s(review.content) +
+                        "\n            "
+                    )
+                  ])
+                ])
+              ]
+            )
+          }),
+          0
+        )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -60250,7 +60220,6 @@ var render = function() {
     "div",
     { staticClass: "d-flex" },
     [
-      _vm._v("\n     คะเเนนที่ได้ " + _vm._s(_vm.rating) + "\n   "),
       _vm._l(_vm.fullStars, function(star) {
         return _c("i", { key: "full" + star, staticClass: "fas fa-star" })
       }),
