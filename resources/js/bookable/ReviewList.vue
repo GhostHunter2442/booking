@@ -1,16 +1,26 @@
 <template>
     <div style="padding: 1.25rem">
         <h5 class="text-uppercase text-secondary font-weight-border pt-4">Review List</h5>
-
+        <star-rating :rating="4.0"> </star-rating>
+        <star-rating :rating="4.4"> </star-rating>
+        <star-rating :rating="4.5"> </star-rating>
+        <star-rating :rating="4.6"> </star-rating>
+        <star-rating :rating="0.9"> </star-rating>
+        <star-rating :rating="3.2"> </star-rating>
+        <star-rating :rating="3.5"> </star-rating>
+        <star-rating :rating="3.7"> </star-rating>
         <div v-if="loading">Loading...</div>
         <div v-else>
                   <div class="border-bottom d-none d-md-block"  v-for="(review ,index) in reviews" :key="index">
             <div class="row pt-4">
                 <div class="col-md-6">Piort Jura</div>
-                <div class="col-md-6 d-flex justify-content-end">{{ review.rating}}</div>
+                <div class="col-md-6 d-flex justify-content-end">
+                    {{ review.rating}}
+                    <star-rating :rating="review.rating"> </star-rating>
+                    </div>
             </div>
             <div class="row">
-                <div class="col-md-12">{{ review.created_at}}</div>
+                <div class="col-md-12">{{ review.created_at | fromNow }}</div>
             </div>
             <div class="row pt-4 pb-4">
                 <div class="col-md-12">
@@ -23,6 +33,7 @@
     </div>
 </template>
 <script>
+// import moment from "moment";
 export default {
     props:{
         bookableId: String
@@ -41,6 +52,11 @@ export default {
                 .then(()=>
                   (this.loading=false));
     },
+    // filters:{
+    //     fromNow(value){
+    //     return moment(value).fromNow();
+    //     }
+    // }
 
 };
 </script>
