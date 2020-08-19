@@ -2,6 +2,8 @@
     <div>
         <h4 class="text-uppercase text-secondary font-waight-bolder pb-2">
             ตรวจสอบห้องพัก
+            <span v-if="noAvailability" class="text-danger">(ห้องไม่พร้อมใช้งาน)</span>
+            <span v-if="hasAvailability" class="text-success">(ห้องพร้อมใช้งาน)</span>
         </h4>
 
         <div class="form-row">
@@ -94,8 +96,8 @@ export default {
         hasAvailability() {
             return 200 === this.status;
         },
-        noAailability() {
-            return 400 === this.status;
+        noAvailability() {
+            return 404 === this.status;
         }
     }
 };

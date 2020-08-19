@@ -1960,6 +1960,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1999,8 +2001,8 @@ __webpack_require__.r(__webpack_exports__);
     hasAvailability: function hasAvailability() {
       return 200 === this.status;
     },
-    noAailability: function noAailability() {
-      return 400 === this.status;
+    noAvailability: function noAvailability() {
+      return 404 === this.status;
     }
   }
 });
@@ -38513,7 +38515,20 @@ var render = function() {
     _c(
       "h4",
       { staticClass: "text-uppercase text-secondary font-waight-bolder pb-2" },
-      [_vm._v("\n        ตรวจสอบห้องพัก\n    ")]
+      [
+        _vm._v("\n        ตรวจสอบห้องพัก\n        "),
+        _vm.noAvailability
+          ? _c("span", { staticClass: "text-danger" }, [
+              _vm._v("(ห้องไม่พร้อมใช้งาน)")
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.hasAvailability
+          ? _c("span", { staticClass: "text-success" }, [
+              _vm._v("(ห้องพร้อมใช้งาน)")
+            ])
+          : _vm._e()
+      ]
     ),
     _vm._v(" "),
     _c("div", { staticClass: "form-row" }, [
