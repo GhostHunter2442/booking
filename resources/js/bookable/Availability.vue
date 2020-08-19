@@ -54,6 +54,9 @@
 </template>
 <script>
 export default {
+    props:{
+        bookableId: String
+    },
     data() {
         return {
             from: null,
