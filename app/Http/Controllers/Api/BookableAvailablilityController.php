@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Bookable;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -13,7 +14,7 @@ class BookableAvailablilityController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function __invoke(Request $request)
+    public function __invoke($id,Request $request)
     {
         $data = $request->validate([
             'from' => 'required|date_format:Y-m-d|after_or_equal:now',
@@ -27,6 +28,9 @@ class BookableAvailablilityController extends Controller
             'to.after_or_equal' => 'เลือกวันที่หลังจากวันเริ่มต้น'
         ]);
 
-        dd($data);
+        $bookable=Bookable::findOrFail($id);
+        return $bookable->availableFor($data['from'],$data['to'])
+               ? response()->json([])
+               : response()->json([],404);
     }
 }
