@@ -1,6 +1,18 @@
 <template>
 
-        <div class="card w-100">
+        <div class="hotel-room text-center ">
+                         
+                           <router-link class="d-block mb-0 thumbnail"
+                           :to="{  name :'bookable',params:{id}}"><img :src="imgURL" alt="Image" class="img-fluid"></router-link>
+                    <div class="hotel-room-body">
+                        <h3 class="heading mb-0">  <router-link :to="{  name :'bookable',params:{id}}"> {{title}}</router-link></h3>
+                        <strong class="price">$350.00 / per night</strong>
+                    </div>
+        </div>
+
+
+
+        <!-- <div class="card w-100">
             <div class="card-body">
                 <router-link :to="{  name :'bookable',params:{id}}">
                   <h5 class="card-title">{{ title }}</h5>
@@ -8,14 +20,20 @@
 
                   <P>{{ description}}</P>
             </div>
-        </div>
+        </div> -->
 
 
 
 </template>
 <script>
+import api  from '../config';
 export default {
  props:{"title":String,"description":String,"id":Number},
+ data() {
+     return {
+         imgURL:api.BASE_IMG+'img_1.jpg'
+     }
+ },
 
 };
 

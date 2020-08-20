@@ -1,7 +1,7 @@
 <template>
 
     <div class="d-flex">
-        
+
        <i class="fas fa-star" v-for="star in fullStars" :key="'full'+star"></i>
        <i class="fas fa-star-half-alt" v-if="halfStar"></i>
         <i class="far fa-star" v-for="star in emptyStars" :key="'empty'+star"></i>
@@ -43,3 +43,16 @@ export default {
     // },
 };
 </script>
+<style>
+.far {
+	direction: rtl;
+	unicode-bidi: bidi-override;
+	color: #ddd; /* Personal choice */
+}
+.fas {
+	direction: rtl;
+	unicode-bidi: bidi-override;
+	color: #f5c535;
+}
+
+</style>
