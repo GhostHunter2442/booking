@@ -1,7 +1,7 @@
 <template>
 
     <div class="row">
-      <div class="col-md-8 pb-4">
+      <div class="col-md-7 pb-4">
            <div class="card ">
           <div class="card-body">
               <div v-if="!loading">
@@ -16,7 +16,7 @@
           <review-list :bookable-id="this.$route.params.id"></review-list>
 
       </div>
-      <div class="col-md-4 pb-4">
+      <div class="col-md-5 pb-4">
          <availabality :bookable-id="this.$route.params.id"></availabality>
       </div>
     </div>

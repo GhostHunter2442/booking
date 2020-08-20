@@ -1,6 +1,7 @@
-import VueRouter from 'vue-router';
+import VueRouter from "vue-router";
 import Bookables from "./bookables/Bookables";
 import Bookable from "./bookable/Bookable";
+import Review from "./review/Review";
 const routes =[
     {
         path:"/",
@@ -12,6 +13,12 @@ const routes =[
         path:"/bookable/:id",
         component:Bookable,
         name:"bookable",
+
+    },
+    {
+        path:"/reviews/:id",
+        component:Review,
+        name:"review",
 
     },
 
