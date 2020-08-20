@@ -2452,10 +2452,9 @@ __webpack_require__.r(__webpack_exports__);
     this.loading = true;
     axios.get("/api/reviews/".concat(this.$route.params.id)).then(function (response) {
       return _this.existingReview = response.data.data;
-    })["catch"](function (err) {
-      if (err.response && err.response.status && 404 === err.response.status) {
-        return axios.get("/api/booking-by-review/".concat(_this.$route.params.id));
-      }
+    })["catch"](function (err) {//   if (err.response && err.response.status && 404 ===err.response.status) {
+      //         return axios.get(`/api/booking-by-review/${this.$route.params.id}`);
+      //   }
     }).then(function (response) {
       console.log(response);
       _this.loading = false;
