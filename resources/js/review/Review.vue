@@ -1,7 +1,10 @@
 <template>
     <div >
+        <success v-if="success">
+            You've left a review , thank you very much !!
+        </success>
           <fatal-error v-if="error"></fatal-error>
-        <div class="row" v-else>
+        <div class="row" v-if="!success && !error">
              <div :class="[{'col-md-4': twoColumns},{'d-none': oneColumns}]">
             <div class="card">
                 <div class="card-body">
@@ -47,7 +50,7 @@
                 :class="[{ 'is-invalid': errorFor('content') }]"
             ></textarea>
                <v-errors :errors="errorFor('content')"></v-errors>
-          
+
         </div>
         <button class="btn btn-lg btn-primary btn-block"
         @click.prevent="submit"
@@ -64,7 +67,10 @@
 </template>
 <script>
 import {is404,is422} from "./../shared/utils/response";
+import validationErrors from "./../shared/mixins/validationErrors";
+
 export default {
+    mixins:[validationErrors],
       data() {
           return {
               review:{
@@ -76,35 +82,38 @@ export default {
               loading:false,
               booking:null,
               error:false,
-              errors:null,
-              sending:false
+              sending:false,
+              success:false
           }
       },
-      created() {
+      async created() {
           this.review.id=this.$route.params.id;
           this.loading= true;
-          axios.get(`/api/reviews/${this.review.id}`)
-          .then(response => {
-              this.existingReview=response.data.data;
-           })
-          .catch(err =>{
-              if (is404(err)) {
-                    return axios.get(`/api/booking-by-review/${this.review.id}`)
-                     .then(response =>{
-                             this.booking = response.data.data;
-                     }).catch((err)=>{
-                        //  is404(err) ? {}:(this.error=true);
+
+        try {
+          this.existingReview =  (await  axios.get(
+              `/api/reviews/${this.review.id}`
+                 )).data.data;
+        } catch (err) {
+            if(is404(err)){
+                try {
+                   this.booking = (await axios.get(
+                       `/api/booking-by-review/${this.review.id}`
+                    )).data.data;
+                } catch (err) {
                         this.error=!is404(err);
                         //    if (!is404(err)){
                         //          this.error=true;
                         //     }
-                     });
-              }
-               this.error=true;
-          })
-          .then(()=> {
-              this.loading =false;
-              });
+                }
+
+            }else{
+                this.error =true;
+            }
+
+        }
+          this.loading =false;
+
       },
       computed: {
           alreadyReviewed(){
@@ -127,9 +136,13 @@ export default {
           submit(){
               this.errors=null;
               this.sending= true;
+               this.success=false;
 
               axios.post(`/api/reviews`,this.review)
-              .then(response => console.log(response))
+              .then(response => {
+                  this.success = 201 === response.status;
+                  //201 === response.starus คืนค่า true กลับม
+              })
               .catch((err)=>{
                    if(is422(err)){ //กรอกข้อมูลไม่ถูกต้อง
                        const errors = err.response.data.errors;
@@ -143,15 +156,19 @@ export default {
                    this.error =true;
               })
               .then(() =>this.sending=false);
-          },
-         errorFor(field) {
-            return null != this.errors && this.errors[field]
-                ? this.errors[field]
-                : null;
-        }
+          }
       },
 
 };
 </script>
 
+<style scoped>
 
+.is-invalid {
+    border-color: #b22222;
+    background-image: none;
+}
+.invalid-feedback {
+    color: #b22222;
+}
+</style>

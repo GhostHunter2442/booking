@@ -146,8 +146,8 @@
 										</div>
 									</div>
 								</div>
-								<div class="form-btn">
-									<button class="btn btn-primary  text-white px-4 btn-block"   @click="check" :disabled="loading">Check availability</button>
+								<div class="form-btn pt-4">
+									<button class="btn btn-primary  text-white px-4 btn-block "   @click="check" :disabled="loading">Check availability</button>
 								</div>
 							</form>
 						</div>
@@ -160,7 +160,9 @@
 </template>
 <script>
 import {is422} from "./../shared/utils/response";
+import validationErrors from "./../shared/mixins/validationErrors";
 export default {
+    mixins:[validationErrors],
     props:{
         bookableId: String
     },
@@ -170,7 +172,6 @@ export default {
             to: null,
             loading: false,
             status: null,
-            errors: null
         };
     },
     methods: {
@@ -193,11 +194,6 @@ export default {
                     this.status = err.response.status;
                 })
                 .then(() => (this.loading = false));
-        },
-        errorFor(field) {
-            return this.hasErrors && this.errors[field]
-                ? this.errors[field]
-                : null;
         }
     },
     computed: {

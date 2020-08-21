@@ -52,7 +52,7 @@ export default {
     // },
 };
 </script>
-<style>
+<style scope>
 .far {
     direction: rtl;
     unicode-bidi: bidi-override;
