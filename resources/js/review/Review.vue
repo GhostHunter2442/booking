@@ -1,6 +1,6 @@
 <template>
     <div >
-          <fatal-error v-if="true"></fatal-error>
+          <fatal-error v-if="error"></fatal-error>
         <div class="row" v-else>
              <div :class="[{'col-md-4': twoColumns},{'d-none': oneColumns}]">
             <div class="card">
@@ -44,11 +44,14 @@
                 rows="10"
                 class="form-control"
                 v-model="review.content"
+                :class="[{ 'is-invalid': errorFor('content') }]"
             ></textarea>
+               <v-errors :errors="errorFor('content')"></v-errors>
+          
         </div>
         <button class="btn btn-lg btn-primary btn-block"
         @click.prevent="submit"
-        :disabled="loading"
+        :disabled="sending"
         >Submit</button>
         </div>
         </div>
@@ -60,12 +63,8 @@
     </div>
 </template>
 <script>
-import {is404} from "./../shared/utils/response";
-// import FatalError from "./../shared/components/FatalError";
+import {is404,is422} from "./../shared/utils/response";
 export default {
-    // comments:{
-    //     FatalError
-    // },
       data() {
           return {
               review:{
@@ -76,7 +75,9 @@ export default {
               existingReview:null,
               loading:false,
               booking:null,
-              error:false
+              error:false,
+              errors:null,
+              sending:false
           }
       },
       created() {
@@ -124,12 +125,33 @@ export default {
       },
       methods: {
           submit(){
+              this.errors=null;
+              this.sending= true;
+
               axios.post(`/api/reviews`,this.review)
               .then(response => console.log(response))
-              .catch((err)=>this.error=true)
-              .then(() =>this.loading=false);
-          }
+              .catch((err)=>{
+                   if(is422(err)){ //กรอกข้อมูลไม่ถูกต้อง
+                       const errors = err.response.data.errors;
+
+                       if(errors["content"] && 1 === _.size(errors)){
+                           this.errors= errors;
+                            return;
+                       }
+
+                   }
+                   this.error =true;
+              })
+              .then(() =>this.sending=false);
+          },
+         errorFor(field) {
+            return null != this.errors && this.errors[field]
+                ? this.errors[field]
+                : null;
+        }
       },
 
 };
 </script>
+
+
