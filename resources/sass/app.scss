@@ -24,6 +24,6 @@
   .v-enter-active, .v-leave-active {
     transition: opacity 4s;
   }
-  .v-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  .v-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 test */ {
     opacity: 0;
   }
