@@ -72,7 +72,7 @@
             </transition>
         </div>
         <div class="row">
-            <div class="col-sm-12">
+            <div class="col-md-6">
                 <div class="form-group">
                     <span class="form-label">Check In</span>
 
@@ -89,9 +89,7 @@
                     <v-errors :errors="errorFor('from')"></v-errors>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-12">
+              <div class="col-md-6">
                 <div class="form-group">
                     <span class="form-label">Check out</span>
 
@@ -109,8 +107,9 @@
             </div>
         </div>
 
+
         <div class="row">
-            <div class="col-md-4">
+            <!-- <div class="col-md-4">
                 <div class="form-group">
                     <span class="form-label">Rooms</span>
                     <select class="form-control">
@@ -120,8 +119,8 @@
                     </select>
                     <span class="select-arrow"></span>
                 </div>
-            </div>
-            <div class="col-md-4">
+            </div> -->
+            <div class="col-md-6">
                 <div class="form-group">
                     <span class="form-label">Adults</span>
                     <select class="form-control">
@@ -132,7 +131,7 @@
                     <span class="select-arrow"></span>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="form-group">
                     <span class="form-label">Children</span>
                     <select class="form-control">

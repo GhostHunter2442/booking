@@ -2290,7 +2290,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -61939,7 +61938,7 @@ var render = function() {
     ),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-sm-12" }, [
+      _c("div", { staticClass: "col-md-6" }, [
         _c(
           "div",
           { staticClass: "form-group" },
@@ -61982,11 +61981,9 @@ var render = function() {
           ],
           1
         )
-      ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-sm-12" }, [
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-6" }, [
         _c(
           "div",
           { staticClass: "form-group" },
@@ -62062,23 +62059,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-4" }, [
-        _c("div", { staticClass: "form-group" }, [
-          _c("span", { staticClass: "form-label" }, [_vm._v("Rooms")]),
-          _vm._v(" "),
-          _c("select", { staticClass: "form-control" }, [
-            _c("option", [_vm._v("1")]),
-            _vm._v(" "),
-            _c("option", [_vm._v("2")]),
-            _vm._v(" "),
-            _c("option", [_vm._v("3")])
-          ]),
-          _vm._v(" "),
-          _c("span", { staticClass: "select-arrow" })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-4" }, [
+      _c("div", { staticClass: "col-md-6" }, [
         _c("div", { staticClass: "form-group" }, [
           _c("span", { staticClass: "form-label" }, [_vm._v("Adults")]),
           _vm._v(" "),
@@ -62094,7 +62075,7 @@ var staticRenderFns = [
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col-md-4" }, [
+      _c("div", { staticClass: "col-md-6" }, [
         _c("div", { staticClass: "form-group" }, [
           _c("span", { staticClass: "form-label" }, [_vm._v("Children")]),
           _vm._v(" "),
