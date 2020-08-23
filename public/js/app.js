@@ -2294,6 +2294,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -61768,7 +61769,7 @@ var render = function() {
                       )
                     ]),
                     _vm._v(" "),
-                    _c("transition", { attrs: { name: "fade" } }, [
+                    _c("transition", [
                       _vm.noAvailability
                         ? _c("span", { staticClass: "text-danger" }, [
                             _c("br"),

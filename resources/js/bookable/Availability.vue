@@ -70,7 +70,8 @@
 
 
                                     </span>
-                                    <transition name="fade">
+                                    <!-- <transition name="fade"> -->
+                                    <transition>
                                             <span v-if="noAvailability" class="text-danger"><br>(ห้องไม่พร้อมใช้งาน)</span>
                                             <span v-if="hasAvailability" class="text-success"><br>(ห้องพร้อมใช้งาน)</span>
                                      </transition>
