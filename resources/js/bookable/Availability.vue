@@ -75,7 +75,7 @@
             <div class="col-sm-12">
                 <div class="form-group">
                     <span class="form-label">Check In</span>
-                    <!-- <input class="form-control" type="date" required> -->
+                  
                     <input
                         type="date"
                         name="from"
@@ -94,7 +94,7 @@
             <div class="col-sm-12">
                 <div class="form-group">
                     <span class="form-label">Check out</span>
-                    <!-- <input class="form-control" type="date" required> -->
+
                     <input
                         type="date"
                         name="to"
