@@ -75,7 +75,7 @@
             <div class="col-sm-12">
                 <div class="form-group">
                     <span class="form-label">Check In</span>
-                  
+
                     <input
                         type="date"
                         name="from"
