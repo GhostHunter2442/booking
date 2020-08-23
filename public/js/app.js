@@ -65590,8 +65590,8 @@ if (inBrowser && window.Vue) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(global, setImmediate) {/*!
- * Vue.js v2.6.11
- * (c) 2014-2019 Evan You
+ * Vue.js v2.6.12
+ * (c) 2014-2020 Evan You
  * Released under the MIT License.
  */
 
@@ -71030,7 +71030,7 @@ Object.defineProperty(Vue, 'FunctionalRenderContext', {
   value: FunctionalRenderContext
 });
 
-Vue.version = '2.6.11';
+Vue.version = '2.6.12';
 
 /*  */
 
@@ -73236,7 +73236,7 @@ function updateDOMProps (oldVnode, vnode) {
       // skip the update if old and new VDOM state is the same.
       // `value` is handled separately because the DOM value may be temporarily
       // out of sync with VDOM state due to focus, composition and modifiers.
-      // This  #4521 by skipping the unnecesarry `checked` update.
+      // This  #4521 by skipping the unnecessary `checked` update.
       cur !== oldProps[key]
     ) {
       // some property updates can throw
@@ -75481,7 +75481,7 @@ function parse (
       }
     },
     comment: function comment (text, start, end) {
-      // adding anyting as a sibling to the root node is forbidden
+      // adding anything as a sibling to the root node is forbidden
       // comments should still be allowed, but ignored
       if (currentParent) {
         var child = {
@@ -78161,15 +78161,14 @@ var CONFIG = {
 /*!****************************************!*\
   !*** ./resources/js/review/Review.vue ***!
   \****************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Review_vue_vue_type_template_id_06d06501_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Review.vue?vue&type=template&id=06d06501&scoped=true& */ "./resources/js/review/Review.vue?vue&type=template&id=06d06501&scoped=true&");
 /* harmony import */ var _Review_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Review.vue?vue&type=script&lang=js& */ "./resources/js/review/Review.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _Review_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _Review_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _Review_vue_vue_type_style_index_0_id_06d06501_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Review.vue?vue&type=style&index=0&id=06d06501&scoped=true&lang=css& */ "./resources/js/review/Review.vue?vue&type=style&index=0&id=06d06501&scoped=true&lang=css&");
+/* empty/unused harmony star reexport *//* harmony import */ var _Review_vue_vue_type_style_index_0_id_06d06501_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Review.vue?vue&type=style&index=0&id=06d06501&scoped=true&lang=css& */ "./resources/js/review/Review.vue?vue&type=style&index=0&id=06d06501&scoped=true&lang=css&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -78201,7 +78200,7 @@ component.options.__file = "resources/js/review/Review.vue"
 /*!*****************************************************************!*\
   !*** ./resources/js/review/Review.vue?vue&type=script&lang=js& ***!
   \*****************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -78686,9 +78685,9 @@ var isErrorWithResponseAndStatus = function isErrorWithResponseAndStatus(err) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\booking\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! C:\xampp\htdocs\booking\resources\sass\app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\booking\resources\sass\style.scss */"./resources/sass/style.scss");
+__webpack_require__(/*! C:\Users\Ghost Hunter\booking\resources\js\app.js */"./resources/js/app.js");
+__webpack_require__(/*! C:\Users\Ghost Hunter\booking\resources\sass\app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! C:\Users\Ghost Hunter\booking\resources\sass\style.scss */"./resources/sass/style.scss");
 
 
 /***/ })
