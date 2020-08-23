@@ -77,7 +77,7 @@
                     <span class="form-label">Check In</span>
                     <!-- <input class="form-control" type="date" required> -->
                     <input
-                        type="text"
+                        type="date"
                         name="from"
                         class="form-control "
                         placeholder="from"
@@ -85,8 +85,7 @@
                         @keyup.enter="check"
                         :class="[{ 'is-invalid': errorFor('from') }]"
                     />
-                    <!-- <div
-                                                    class="invalid-feedback"  v-for="(error, index) in this.errorFor('from')" :key="'from' + index" >{{error}}</div> -->
+                    <!-- <div class="invalid-feedback"  v-for="(error, index) in this.errorFor('from')" :key="'from' + index" >{{error}}</div> -->
                     <v-errors :errors="errorFor('from')"></v-errors>
                 </div>
             </div>
@@ -97,7 +96,7 @@
                     <span class="form-label">Check out</span>
                     <!-- <input class="form-control" type="date" required> -->
                     <input
-                        type="text"
+                        type="date"
                         name="to"
                         class="form-control "
                         placeholder="to"

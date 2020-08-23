@@ -2291,7 +2291,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -61958,7 +61957,7 @@ var render = function() {
               ],
               staticClass: "form-control ",
               class: [{ "is-invalid": _vm.errorFor("from") }],
-              attrs: { type: "text", name: "from", placeholder: "from" },
+              attrs: { type: "date", name: "from", placeholder: "from" },
               domProps: { value: _vm.from },
               on: {
                 keyup: function($event) {
@@ -62005,7 +62004,7 @@ var render = function() {
               ],
               staticClass: "form-control ",
               class: [{ "is-invalid": _vm.errorFor("to") }],
-              attrs: { type: "text", name: "to", placeholder: "to" },
+              attrs: { type: "date", name: "to", placeholder: "to" },
               domProps: { value: _vm.to },
               on: {
                 keyup: function($event) {
