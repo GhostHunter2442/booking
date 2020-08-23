@@ -65,9 +65,16 @@
 						<div class="booking-form">
 							<form>
 								<div class="form-group text-center">
-									<span class="form-label-head">Check Availability</span>
-                                      <span v-if="noAvailability" class="text-danger"><br>(ห้องไม่พร้อมใช้งาน)</span>
-                                      <span v-if="hasAvailability" class="text-success"><br>(ห้องพร้อมใช้งาน)</span>
+									<span class="form-label-head">
+                                        Check Availability
+
+
+                                    </span>
+                                    <transition name="fade">
+                                            <span v-if="noAvailability" class="text-danger"><br>(ห้องไม่พร้อมใช้งาน)</span>
+                                            <span v-if="hasAvailability" class="text-success"><br>(ห้องพร้อมใช้งาน)</span>
+                                     </transition>
+
 								</div>
 								<div class="row">
 									<div class="col-sm-12">
@@ -147,7 +154,11 @@
 									</div>
 								</div>
 								<div class="form-btn pt-4">
-									<button class="btn btn-primary  text-white px-4 btn-block "   @click="check" :disabled="loading">Check availability</button>
+									<button class="btn btn-primary  text-white px-4 btn-block "   @click="check" :disabled="loading">
+                                     <span v-if="!loading">Check</span>
+                                      <span v-if="loading"> <i class="fas fa-spinner fa-pulse"></i> Checking...</span>
+
+                                        </button>
 								</div>
 							</form>
 						</div>
@@ -164,20 +175,26 @@ import validationErrors from "./../shared/mixins/validationErrors";
 export default {
     mixins:[validationErrors],
     props:{
-        bookableId: String
+        bookableId: [String,Number]
     },
     data() {
         return {
-            from: null,
-            to: null,
+            from: this.$store.state.lastSearch.from,
+            to: this.$store.state.lastSearch.to,
             loading: false,
             status: null,
         };
     },
     methods: {
         check() {
+
             this.loading = true;
             this.errors = null;
+                this.$store.dispatch('setLastesSearch',{
+                    from:this.from,
+                    to:this.to
+                });
+
             axios
                 .get(
                     `/api/bookables/${this.$route.params.id}/availability?

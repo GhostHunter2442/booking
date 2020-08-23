@@ -17,10 +17,18 @@ $suffix = [
     'Luxury Rooms',
     'Fancy Rooms'
 ];
+$suffix_picture = [
+    'img_1.jpg',
+    'img_2.jpg',
+    'img_3.jpg',
+    'img_4.jpg',
+];
 
-$factory->define(Bookable::class, function (Faker $faker) use ($suffix) {
+$factory->define(Bookable::class, function (Faker $faker) use ($suffix,$suffix_picture) {
     return [
         'title'=> $faker->city . ' ' . Arr::random($suffix),
-        'description'=> $faker->text()
+        'description'=> $faker->text(),
+        'price'=>random_int(15,600),
+        'main_picture'=> Arr::random($suffix_picture),
     ];
 });

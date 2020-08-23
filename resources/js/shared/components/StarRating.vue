@@ -6,7 +6,7 @@
             :key="'full' + star"
              @click="$emit('input',star)"
         ></i>
-        <i class="fas fa-star-half-alt" v-if="halfStar"></i>
+        <i   class="fas fa-star-half-alt" v-if="halfStar"></i>
         <i
             class="far fa-star"
             v-for="star in emptyStars"
@@ -52,7 +52,7 @@ export default {
     // },
 };
 </script>
-<style scope>
+<style scoped>
 .far {
     direction: rtl;
     unicode-bidi: bidi-override;
