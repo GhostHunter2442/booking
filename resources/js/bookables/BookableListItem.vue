@@ -6,7 +6,7 @@
                            :to="{  name :'bookable',params:{id}}"><img :src="imgURL+main_picture" alt="Image" class="img-fluid"></router-link>
                     <div class="hotel-room-body">
                         <h3 class="heading mb-0">  <router-link :to="{  name :'bookable',params:{id}}"> {{title}}</router-link></h3>
-                        <strong class="price">${{price}} / per night</strong>
+                        <strong class="price">฿{{price}} / per night</strong>
                     </div>
         </div>
 
