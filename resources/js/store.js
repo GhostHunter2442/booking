@@ -17,7 +17,8 @@ export default {
                   state.basket.items.push(payload);
              },
              removeFromBasket(state,payload){
-                  state.basket.itmes=state.basket.items.filter(item =>item.boookable.id != payload);
+                  
+                  state.basket.items = state.basket.items.filter(item => item.bookable.id !== payload);
              }
 
         },
