@@ -2505,25 +2505,20 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       _this.loading = false;
     });
   },
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_4__["mapState"])({
-    lastSearch: "lastSearch",
-    inBasketAlready: function inBasketAlready(state) {
-      var _this2 = this;
-
+  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_4__["mapState"])({
+    lastSearch: "lastSearch"
+  })), {}, {
+    inBasketAlready: function inBasketAlready() {
       if (null === this.bookable) {
         return false;
-      } // c b c c c c
-      // false false true true
+      }
 
-
-      return state.basket.items.reduce(function (result, item) {
-        return result || item.bookable.id === _this2.bookable.id;
-      }, false);
+      return this.$store.getters.inBasketAlready(this.bookable.id);
     }
-  })),
+  }),
   methods: {
     checkPrice: function checkPrice(hasAvailability) {
-      var _this3 = this;
+      var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
@@ -2536,23 +2531,23 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 }
 
                 // if != true
-                _this3.price = null;
+                _this2.price = null;
                 return _context.abrupt("return");
 
               case 3:
                 _context.prev = 3;
                 _context.next = 6;
-                return axios.get("/api/bookables/".concat(_this3.bookable.id, "/price?\n                    from=").concat(_this3.lastSearch.from, "&to=").concat(_this3.lastSearch.to));
+                return axios.get("/api/bookables/".concat(_this2.bookable.id, "/price?\n                    from=").concat(_this2.lastSearch.from, "&to=").concat(_this2.lastSearch.to));
 
               case 6:
-                _this3.price = _context.sent.data.data;
+                _this2.price = _context.sent.data.data;
                 _context.next = 12;
                 break;
 
               case 9:
                 _context.prev = 9;
                 _context.t0 = _context["catch"](3);
-                _this3.price = null;
+                _this2.price = null;
 
               case 12:
               case "end":
@@ -2563,14 +2558,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }))();
     },
     addToBasket: function addToBasket() {
-      this.$store.commit("addToBasket", {
+      this.$store.dispatch("addToBasket", {
         bookable: this.bookable,
         price: this.price,
         dates: this.lastSearch
       });
     },
     removeFromBasket: function removeFromBasket() {
-      this.$store.commit("removeFromBasket", this.bookable.id);
+      this.$store.dispatch("removeFromBasket", this.bookable.id);
     }
   }
 });
@@ -80646,6 +80641,9 @@ __webpack_require__.r(__webpack_exports__);
       state.basket.items = state.basket.items.filter(function (item) {
         return item.bookable.id !== payload;
       });
+    },
+    setBasket: function setBasket(state, payload) {
+      state.basket = payload;
     }
   },
   actions: {
@@ -80654,16 +80652,42 @@ __webpack_require__.r(__webpack_exports__);
       localStorage.setItem('lastSearch', JSON.stringify(payload));
     },
     loadStoredState: function loadStoredState(context) {
-      var lastSerrch = localStorage.getItem('lastSearch');
+      var lastSearch = localStorage.getItem('lastSearch');
 
-      if (lastSerrch) {
-        context.commit('setLastSearch', JSON.parse(lastSerrch));
+      if (lastSearch) {
+        context.commit('setLastSearch', JSON.parse(lastSearch));
       }
+
+      var basket = localStorage.getItem('basket');
+
+      if (basket) {
+        context.commit('setBasket', JSON.parse(basket));
+      }
+    },
+    addToBasket: function addToBasket(_ref, payload) {
+      var commit = _ref.commit,
+          state = _ref.state;
+      // context.state, context.commit
+      commit('addToBasket', payload);
+      localStorage.setItem('basket', JSON.stringify(state.basket));
+    },
+    removeFromBasket: function removeFromBasket(_ref2, payload) {
+      var commit = _ref2.commit,
+          state = _ref2.state;
+      commit('removeFromBasket', payload);
+      localStorage.setItem('basket', JSON.stringify(state.basket));
     }
   },
   getters: {
     itemsInBasket: function itemsInBasket(state) {
       return state.basket.items.length;
+    },
+    inBasketAlready: function inBasketAlready(state) {
+      return function (id) {
+        return state.basket.items.reduce(function (result, item) {
+          return result || item.bookable.id === id;
+        }, false);
+      };
     }
   }
 });

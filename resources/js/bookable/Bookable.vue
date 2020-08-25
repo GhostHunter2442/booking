@@ -40,7 +40,7 @@
                                         >
                                             Book now
                                         </button>
-                                        
+
                                     </transition>
                                         <button
                                             class="btn btn-outline-primary btn-block"
@@ -68,7 +68,7 @@
 import Availabality from "./Availability";
 import ReviewList from "./ReviewList";
 import PriceBreakdown from "./PriceBreakdown";
-import { mapState } from "vuex";
+import { mapState , mapGetters } from "vuex";
 export default {
     components: {
         Availabality,
@@ -89,20 +89,18 @@ export default {
             this.loading = false;
         });
     },
-    computed: {
-        ...mapState({
-            lastSearch: "lastSearch",
-            inBasketAlready(state){
-                if(null === this.bookable){
-                    return false;
-                }
-                // c b c c c c
-                // false false true true
-               return state.basket.items.reduce((result,item)=>
-                    result || item.bookable.id === this.bookable.id,false);
-            }
-        })
-    },
+  computed: {
+    ...mapState({
+      lastSearch: "lastSearch"
+    }),
+    inBasketAlready() {
+      if (null === this.bookable) {
+        return false;
+      }
+
+      return this.$store.getters.inBasketAlready(this.bookable.id);
+    }
+  },
     methods: {
         async checkPrice(hasAvailability) {
             if (!hasAvailability) {
@@ -120,14 +118,14 @@ export default {
             }
         },
          addToBasket(){
-            this.$store.commit("addToBasket",{
+            this.$store.dispatch("addToBasket",{
                 bookable :this.bookable,
                 price:this.price,
                 dates:this.lastSearch
             })
           },
           removeFromBasket(){
-                this.$store.commit("removeFromBasket",this.bookable.id);
+                this.$store.dispatch("removeFromBasket",this.bookable.id);
           }
     },
 
