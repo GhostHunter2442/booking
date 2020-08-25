@@ -2092,6 +2092,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2099,10 +2107,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       lastSearch: this.$store.state.lastSearch
     };
   },
-  computed: _objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])({
+  computed: _objectSpread(_objectSpread(_objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])({
     //   lastSearchComputed :state => state.lastSearch
     lastSearchComputed: "lastSearch" //short
 
+  })), Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])({
+    itemsInBasket: 'itemsInBasket'
   })), {}, {
     somtingElse: function somtingElse() {
       return 1 + 3;
@@ -2455,6 +2465,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 
@@ -2524,6 +2535,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           }
         }, _callee, null, [[3, 9]]);
       }))();
+    },
+    addToBasket: function addToBasket() {
+      this.$store.commit("addToBasket", {
+        bookable: this.bookable,
+        price: this.price,
+        dates: this.lastSearch
+      });
     }
   }
 });
@@ -61557,7 +61575,35 @@ var render = function() {
                                   staticClass: "nav-link",
                                   attrs: { to: { name: "home" } }
                                 },
-                                [_vm._v("Home")]
+                                [
+                                  _vm._v(
+                                    "\n                             Home\n\n                       "
+                                  )
+                                ]
+                              )
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "li",
+                            [
+                              _c(
+                                "router-link",
+                                {
+                                  staticClass: "nav-link",
+                                  attrs: { to: { name: "home" } }
+                                },
+                                [
+                                  _vm._v("Basket\n                         "),
+                                  _vm.itemsInBasket
+                                    ? _c(
+                                        "span",
+                                        { staticClass: "badge badge-primary" },
+                                        [_vm._v(_vm._s(_vm.itemsInBasket))]
+                                      )
+                                    : _vm._e()
+                                ]
                               )
                             ],
                             1
@@ -61565,9 +61611,7 @@ var render = function() {
                           _vm._v(" "),
                           _vm._m(2),
                           _vm._v(" "),
-                          _vm._m(3),
-                          _vm._v(" "),
-                          _vm._m(4)
+                          _vm._m(3)
                         ]
                       )
                     ])
@@ -61580,13 +61624,13 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _vm._m(5),
+    _vm._m(4),
     _vm._v(" "),
     _c("div", { staticClass: "site-section bg-light" }, [
       _c("div", { staticClass: "container" }, [_c("router-view")], 1)
     ]),
     _vm._v(" "),
-    _vm._m(6)
+    _vm._m(5)
   ])
 }
 var staticRenderFns = [
@@ -61622,14 +61666,6 @@ var staticRenderFns = [
         )
       ]
     )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("li", [
-      _c("a", { attrs: { href: "Javascript:;" } }, [_vm._v("Events")])
-    ])
   },
   function() {
     var _vm = this
@@ -62143,53 +62179,53 @@ var render = function() {
         _c("div", { staticClass: "container" }, [
           _c("div", { staticClass: "row" }, [
             _c("div", { staticClass: "col-md-12" }, [
-              _c("div", { staticClass: "booking-form" }, [
-                _c(
-                  "form",
-                  [
-                    _c("availabality", {
-                      staticClass: "mb-4",
-                      attrs: { "bookable-id": this.$route.params.id },
-                      on: {
-                        availability: function($event) {
-                          return _vm.checkPrice($event)
-                        }
+              _c(
+                "div",
+                { staticClass: "booking-form" },
+                [
+                  _c("availabality", {
+                    staticClass: "mb-4",
+                    attrs: { "bookable-id": this.$route.params.id },
+                    on: {
+                      availability: function($event) {
+                        return _vm.checkPrice($event)
                       }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "transition",
-                      { attrs: { name: "fade" } },
-                      [
-                        _vm.price
-                          ? _c("price-breakdown", {
-                              staticClass: "mb-4",
-                              attrs: { price: _vm.price }
-                            })
-                          : _vm._e()
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c("transition", { attrs: { name: "fade" } }, [
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "transition",
+                    { attrs: { name: "fade" } },
+                    [
                       _vm.price
-                        ? _c(
-                            "button",
-                            {
-                              staticClass: "btn btn-outline-primary btn-block"
-                            },
-                            [
-                              _vm._v(
-                                "\n                                        Book now\n                                    "
-                              )
-                            ]
-                          )
+                        ? _c("price-breakdown", {
+                            staticClass: "mb-4",
+                            attrs: { price: _vm.price }
+                          })
                         : _vm._e()
-                    ])
-                  ],
-                  1
-                )
-              ])
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("transition", { attrs: { name: "fade" } }, [
+                    _vm.price
+                      ? _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-outline-primary btn-block",
+                            on: { click: _vm.addToBasket }
+                          },
+                          [
+                            _vm._v(
+                              "\n                                        Book now\n                                    "
+                            )
+                          ]
+                        )
+                      : _vm._e()
+                  ])
+                ],
+                1
+              )
             ])
           ])
         ])
@@ -80474,11 +80510,22 @@ __webpack_require__.r(__webpack_exports__);
     lastSearch: {
       from: null,
       to: null
+    },
+    basket: {
+      items: []
     }
   },
   mutations: {
     setLastSearch: function setLastSearch(state, payload) {
       state.lastSearch = payload;
+    },
+    addToBasket: function addToBasket(state, payload) {
+      state.basket.items.push(payload);
+    },
+    removeFromBasket: function removeFromBasket(state, payload) {
+      state.basket.itmes = state.basket.items.filter(function (item) {
+        return item.boookable.id != payload;
+      });
     }
   },
   actions: {
@@ -80492,6 +80539,11 @@ __webpack_require__.r(__webpack_exports__);
       if (lastSerrch) {
         context.commit('setLastSearch', JSON.parse(lastSerrch));
       }
+    }
+  },
+  getters: {
+    itemsInBasket: function itemsInBasket(state) {
+      return state.basket.items.length;
     }
   }
 });

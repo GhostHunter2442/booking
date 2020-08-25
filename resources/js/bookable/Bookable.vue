@@ -20,7 +20,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="booking-form">
-                                <form>
+                                <!-- <form> -->
                                     <availabality
                                         :bookable-id="this.$route.params.id"
                                         @availability="checkPrice($event)"
@@ -35,11 +35,12 @@
                                         <button
                                             class="btn btn-outline-primary btn-block"
                                             v-if="price"
+                                            @click="addToBasket"
                                         >
                                             Book now
                                         </button>
                                     </transition>
-                                </form>
+                                <!-- </form> -->
                             </div>
                         </div>
                     </div>
@@ -95,7 +96,15 @@ export default {
             } catch (err) {
                 this.price = null;
             }
-        }
-    }
+        },
+         addToBasket(){
+            this.$store.commit("addToBasket",{
+                bookable :this.bookable,
+                price:this.price,
+                dates:this.lastSearch
+            })
+          }
+    },
+
 };
 </script>

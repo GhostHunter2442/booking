@@ -4,12 +4,21 @@ export default {
           lastSearch:{
               from:null,
               to:null
+          },
+          basket:{
+              items:[]
           }
         },
         mutations: {
             setLastSearch(state,payload){
                 state.lastSearch = payload;
-          }
+             },
+             addToBasket(state,payload){
+                  state.basket.items.push(payload);
+             },
+             removeFromBasket(state,payload){
+                  state.basket.itmes=state.basket.items.filter(item =>item.boookable.id != payload);
+             }
 
         },
         actions:{
@@ -23,6 +32,11 @@ export default {
                      context.commit('setLastSearch',JSON.parse(lastSerrch));
                  }
             }
+
+        },
+        getters:{
+            itemsInBasket:(state) => state.basket.items.length
+
 
         }
 
