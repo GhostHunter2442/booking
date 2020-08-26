@@ -18,6 +18,11 @@ class Booking extends Model
         return $this->hasOne(Review::class);
     }
 
+    public function address()
+    {
+        return $this->belongsTo(Address::class);
+    }
+
     public function scopeBetweenDates(Builder $query,$from,$to){
 
         return $query->where('to','>=',$from)
@@ -35,7 +40,7 @@ class Booking extends Model
     {
             parent::boot();
 
-            static::creating(function ($booking){
+            static::creating(function ($booking){// ทุกครั้งที่ created ข้อมูลจะสร้าง uuid 
                  $booking->review_key =Str::uuid();
             });
 
