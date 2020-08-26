@@ -53,7 +53,7 @@
                       </li>
 
                       <li>
-                          <router-link class="nav-link" :to="{name: 'home'}"
+                          <router-link class="nav-link" :to="{name: 'basket'}"
                           >Basket
                           <span v-if="itemsInBasket" class="badge badge-primary">{{ itemsInBasket}}</span>
                           </router-link>
