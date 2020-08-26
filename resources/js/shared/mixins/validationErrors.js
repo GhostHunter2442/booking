@@ -10,6 +10,6 @@ export default {
             ? this.errors[field]
             : null;
     }
-  },
+  }
 
 };

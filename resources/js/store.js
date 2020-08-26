@@ -29,15 +29,15 @@ export default {
     actions: {
         setLastesSearch(context, payload) {
             context.commit('setLastSearch', payload);
-            localStorage.setItem('lastSearch', JSON.stringify(payload));
+            localStorage.setItem('lastSearchs', JSON.stringify(payload));
         },
         loadStoredState(context) {
-            const lastSearch = localStorage.getItem('lastSearch');
+            const lastSearch = localStorage.getItem('lastSearchs');
             if (lastSearch) {
                 context.commit('setLastSearch', JSON.parse(lastSearch));
             }
 
-            const basket = localStorage.getItem('basket');
+            const basket = localStorage.getItem('baskets');
             if (basket) {
                 context.commit('setBasket', JSON.parse(basket));
             }
@@ -46,12 +46,16 @@ export default {
         addToBasket({ commit, state }, payload) {
             // context.state, context.commit
             commit('addToBasket', payload);
-            localStorage.setItem('basket', JSON.stringify(state.basket));
+            localStorage.setItem('baskets', JSON.stringify(state.basket));
         },
         removeFromBasket({ commit, state }, payload) {
             commit('removeFromBasket', payload);
-            localStorage.setItem('basket', JSON.stringify(state.basket));
+            localStorage.setItem('baskets', JSON.stringify(state.basket));
         },
+        clearBasket({commit,state},payload){
+            commit("setBasket",{items:[]});
+            localStorage.setItem("baskets",JSON.stringify(state.basket))
+        }
 
 
     },
