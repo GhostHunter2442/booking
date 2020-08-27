@@ -2322,6 +2322,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2348,7 +2353,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   })), {}, {
     success: function success() {
-      return !this.loading && 0 === this.itemsInBasket && this.bookingAtttempted; //false                     0                      true
+      return !this.loading && 0 === this.itemsInBasket && this.bookingAtttempted && null === this.errors; //false                     0                      true                   true
     }
   }),
   methods: {
@@ -62745,11 +62750,9 @@ var render = function() {
                   ])
                 ])
               : _c("div", { staticClass: "col-md-8" }, [
-                  _c(
-                    "div",
-                    { staticClass: "jumbotron jumbotron-fluid text-center" },
-                    [_c("h1", [_vm._v("Empty")])]
-                  )
+                  _c("div", { staticClass: "text-center success" }, [
+                    _c("i", { staticClass: "fas fa-calendar-times" })
+                  ])
                 ]),
             _vm._v(" "),
             _c(

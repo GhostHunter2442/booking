@@ -117,9 +117,14 @@
             </div>
 
             <div class="col-md-8" v-else>
-                <div class="jumbotron jumbotron-fluid text-center">
-                    <h1>Empty</h1>
-                </div>
+                <!-- <div class="jumbotron jumbotron-fluid text-center"> -->
+                    <!-- <h1>Empty</h1> -->
+                     <div class="text-center success">
+
+                        <i class="fas fa-calendar-times"></i>
+                        <!-- <h2 class="mt-4">Empty</h2> -->
+                        </div>
+                <!-- </div> -->
             </div>
 
             <div class="col-md-4">
@@ -202,8 +207,8 @@ export default {
             basket: state => state.basket.items
         }),
         success(){
-            return !this.loading && 0 === this.itemsInBasket && this.bookingAtttempted;
-                      //false                     0                      true
+            return !this.loading && 0 === this.itemsInBasket && this.bookingAtttempted && null === this.errors;
+                      //false                     0                      true                   true
         }
     },
     methods: {
