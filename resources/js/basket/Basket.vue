@@ -1,6 +1,9 @@
 <template>
     <div>
-        <div class="row">
+        <success v-if="success">
+            Congratulation on your purchase!!
+        </success>
+        <div class="row" v-else>
             <div class="col-md-8" v-if="itemsInBasket">
                 <div class="form-row">
                     <div class="col-md-6 form-group">
@@ -179,6 +182,7 @@ export default {
     data() {
         return {
             loading: false,
+            bookingAtttempted:false,
             customer: {
                 first_name: null,
                 last_name: null,
@@ -196,7 +200,11 @@ export default {
         ...mapGetters(["itemsInBasket"]),
         ...mapState({
             basket: state => state.basket.items
-        })
+        }),
+        success(){
+            return !this.loading && 0 === this.itemsInBasket && this.bookingAtttempted;
+                      //false                     0                      true
+        }
     },
     methods: {
         removeFromBasket(id) {
@@ -204,6 +212,7 @@ export default {
         },
         async book() {
             this.loading = true;
+            this.bookingAtttempted=false;
             this.errors=null; // เพื่อทำการ refresh load error ใหม่
             try {
                 await axios.post(`api/checkout`, {
@@ -217,8 +226,10 @@ export default {
                 this.$store.dispatch("clearBasket");
             } catch (error) {
                 this.errors = error.response && error.response.data.errors;
+
             }
             this.loading = false;
+            this.bookingAtttempted=true;
         }
     }
 };
