@@ -1,4 +1,4 @@
-
+import { isLoggedIn, logOut } from "./shared/utils/auth";
 
 export default {
     state: {
@@ -9,7 +9,8 @@ export default {
         basket: {
             items: []
         },
-
+        isLoggedIn:false,
+         user:{}
     },
     mutations: {
         setLastSearch(state, payload) {
@@ -24,6 +25,12 @@ export default {
         setBasket(state, payload) {
             state.basket = payload;
         },
+        setUser(state,payload){
+            state.user=payload;
+        },
+        setLoggedIn(state,payload){
+            state.isLoggedIn = payload;
+        }
 
     },
     actions: {
@@ -55,12 +62,32 @@ export default {
         clearBasket({commit,state},payload){
             commit("setBasket",{items:[]});
             localStorage.setItem("baskets",JSON.stringify(state.basket))
+        },
+        async loadUser({commit,dispatch}){
+              if(isLoggedIn()){ // ถ้า isLoggerIn ==true
+                    try {
+                        const user =  (await axios.get('/user')).data;
+                        commit("setUser",user);
+                        commit("setLoggedIn",true);
+                    } catch (error) {
+                        
+                            dispatch("logout");
+
+
+                    }
+              }
+        },
+        logout({commit}){
+            commit("setUser",{});
+            commit("setLoggedIn",false);
+            logOut(); // clear localstorege = false
         }
 
 
     },
     getters: {
         itemsInBasket: (state) => state.basket.items.length,
+        itemUserLogin:(state) => state.user.name,
         inBasketAlready(state) {
             return function (id) {
                 return state.basket.items.reduce(

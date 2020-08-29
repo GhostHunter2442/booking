@@ -60,6 +60,26 @@
                       </li>
                       <li><a href="Javascript:;">About</a></li>
                       <li><a href="Javascript:;">Contact</a></li>
+                      <li v-if="isLoggedIn"><a href="Javascript:;">User : {{itemUserLogin}}</a></li>
+                       <!-- <li v-if="!isLoggedIn">
+                          <router-link class="nav-link" :to="{name: 'logout'}">
+                             logout
+                        </router-link>
+                       </li> -->
+                       <li v-if="!isLoggedIn">
+                          <router-link class="nav-link" :to="{name: 'register'}">
+                             Register
+                        </router-link>
+                       </li>
+                        <li v-if="!isLoggedIn">
+                          <router-link class="nav-link" :to="{name: 'login'}">
+                             Sign-in
+                        </router-link>
+                       </li>
+                         <li v-if="isLoggedIn">
+                        <a class="nav-link" href="#" @click.prevent="logout">Logout</a>
+                       </li>
+
                     </ul>
                   </div>
                 </nav>
@@ -172,7 +192,8 @@
 </template>
 
 <script>
-import { mapState ,mapGetters} from 'vuex'
+import { mapState ,mapGetters} from 'vuex';
+import { logOut } from './shared/utils/auth';
  export default{
        data() {
        return {
@@ -182,14 +203,27 @@ import { mapState ,mapGetters} from 'vuex'
       computed: {
           ...mapState({
         //   lastSearchComputed :state => state.lastSearch
-            lastSearchComputed : "lastSearch"  //short
+            lastSearchComputed : "lastSearch" , //short
+            isLoggedIn:"isLoggedIn"
           }),
           ...mapGetters({
-                itemsInBasket :'itemsInBasket'
+                itemsInBasket :'itemsInBasket',
+                itemUserLogin:'itemUserLogin'
           }),
           somtingElse(){
               return 1+3;
           }
-      }
+      },
+      methods: {
+          async logout(){
+             try{
+                 axios.post("/logout");
+                 this.$store.dispatch("logout");
+
+             }catch(error){
+                 this.$store.dispatch("logout");
+             }
+          }
+      },
  };
 </script>

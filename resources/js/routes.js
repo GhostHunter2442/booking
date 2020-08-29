@@ -28,6 +28,12 @@ const routes =[
         name:"basket",
 
     },
+    {
+        path:"/auth/login",
+        component:require("./auth/Login").default,
+        name:"login",
+
+    },
 
 ];
 
