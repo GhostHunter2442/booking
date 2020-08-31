@@ -4489,7 +4489,9 @@ __webpack_require__.r(__webpack_exports__);
       var request = axios.get("/api/bookables?page=" + page).then(function (resp) {
         _this.bookables = resp.data; //  this.bookables.push({title:"x",description:"X"});
 
-        _this.loading = false;
+        setInterval(function () {
+          _this.loading = false;
+        }, 1000);
       });
     }
   },
