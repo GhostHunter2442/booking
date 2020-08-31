@@ -3,6 +3,8 @@ import Bookables from "./bookables/Bookables";
 import Bookable from "./bookable/Bookable";
 import Review from "./review/Review";
 import Basket from "./basket/Basket";
+import Contack from "./contact/Contact";
+import About from "./about/About";
 const routes =[
     {
         path:"/",
@@ -26,6 +28,18 @@ const routes =[
         path:"/basket",
         component:Basket,
         name:"basket",
+
+    },
+    {
+        path:"/contact",
+        component:Contack,
+        name:"contact",
+
+    },
+    {
+        path:"/about",
+        component:About,
+        name:"about",
 
     },
     {

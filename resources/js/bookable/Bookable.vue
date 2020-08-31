@@ -11,7 +11,16 @@
                         <hr />
                         <article>{{ bookable.description }}</article>
                     </div>
-                    <div v-else>Loading...</div>
+                    <div v-else>
+                    <ListLoader>
+                    <rect x="0" y="0" rx="3" ry="3" width="250" height="10" />
+                    <rect x="20" y="20" rx="3" ry="3" width="220" height="10" />
+                    <rect x="20" y="40" rx="3" ry="3" width="170" height="10" />
+                    <rect x="0" y="60" rx="3" ry="3" width="250" height="10" />
+                    <rect x="20" y="80" rx="3" ry="3" width="200" height="10" />
+                    <rect x="20" y="100" rx="3" ry="3" width="80" height="10" />
+                    </ListLoader>
+                    </div>
                 <!-- </div> -->
             <!-- </div> -->
 
@@ -68,6 +77,14 @@
 </template>
 
 <script>
+import {
+  ContentLoader,
+  FacebookLoader,
+  CodeLoader,
+  BulletListLoader,
+  InstagramLoader,
+  ListLoader
+} from 'vue-content-loader';
 import Availabality from "./Availability";
 import ReviewList from "./ReviewList";
 import PriceBreakdown from "./PriceBreakdown";
@@ -78,6 +95,7 @@ export default {
         Availabality,
         ReviewList,
         PriceBreakdown,
+         ListLoader
 
     },
     data() {
@@ -95,7 +113,9 @@ export default {
         this.loading = true;
         axios.get(`/api/bookables/${this.$route.params.id}`).then(resp => {
             this.bookable = resp.data.data;
-            this.loading = false;
+              setInterval(() => {
+                                this.loading= false;
+                            }, 1500);
         });
     },
   computed: {

@@ -52,20 +52,25 @@
                         </router-link>
                       </li>
 
-                      <li>
-                          <router-link class="nav-link" :to="{name: 'basket'}"
-                          >Basket
-                          <span v-if="itemsInBasket" class="badge badge-primary">{{ itemsInBasket}}</span>
-                          </router-link>
-                      </li>
-                      <li><a href="Javascript:;">About</a></li>
-                      <li><a href="Javascript:;">Contact</a></li>
+
+                      <li> <router-link class="nav-link" :to="{name: 'about'}">
+                             About
+                        </router-link></li>
+                      <li> <router-link class="nav-link" :to="{name: 'contact'}">
+                             Contact
+                        </router-link></li>
                       <li v-if="isLoggedIn"><a href="Javascript:;">User : {{itemUserLogin}}</a></li>
                        <!-- <li v-if="!isLoggedIn">
                           <router-link class="nav-link" :to="{name: 'logout'}">
                              logout
                         </router-link>
                        </li> -->
+                        <li>
+                          <router-link class="nav-link" :to="{name: 'basket'}"
+                          >Booking
+                          <span v-if="itemsInBasket" class="badge badge-primary">{{ itemsInBasket}}</span>
+                          </router-link>
+                      </li>
                        <li v-if="!isLoggedIn">
                           <router-link class="nav-link" :to="{name: 'register'}">
                              Register

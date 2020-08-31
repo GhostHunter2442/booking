@@ -6,7 +6,7 @@
         <div v-else>
                   <div class="border-bottom d-none d-md-block"  v-for="(review ,index) in reviews" :key="index">
             <div class="row pt-4">
-                <div class="col-md-6">Piort Jura</div>
+                <div class="col-md-6">admin test</div>
                 <div class="col-md-6 d-flex justify-content-end">
 
                     <star-rating :value="review.rating" class="fa-lg"> </star-rating>
