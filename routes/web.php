@@ -24,3 +24,20 @@ Route::middleware('auth')->get('/user', function (Request $request) {
 Route::get('/{any?}', function () {
     return view('welcome');
 })->where('any', '^(?!api\/)[\/\w\.\,-]*');
+
+
+Route::get('/clear', function() {
+
+    Artisan::call('cache:clear');
+    Artisan::call('config:clear');
+    Artisan::call('config:cache');
+    Artisan::call('view:clear');
+
+    return "Cleared!";
+
+ });
+ Route::get('/foo', function () {
+     Artisan::call('storage:link');
+    return "linked!";
+
+ });

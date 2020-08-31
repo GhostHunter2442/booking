@@ -50,7 +50,7 @@
             </div>
             <div class="text-nowrap">
                 Forgotten password?
-                <router-link :to="{ name: 'name' }" class="font=weight-bold"
+                <router-link :to="{ name: 'register' }" class="font=weight-bold"
                     >Resetpassword</router-link
                 >
             </div>

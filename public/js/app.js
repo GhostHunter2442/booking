@@ -65235,7 +65235,7 @@ var render = function() {
             "router-link",
             {
               staticClass: "font=weight-bold",
-              attrs: { to: { name: "name" } }
+              attrs: { to: { name: "register" } }
             },
             [_vm._v("Resetpassword")]
           )
@@ -85037,9 +85037,9 @@ axios.defaults.withCredentials = true;
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 var CONFIG = {
-  BASE_URL: 'https://shopping.dataghosthunter.com/',
-  BASE_URL_IMG: 'http://shopping.dataghosthunter.com/storage/images/',
-  BASE_IMG: 'http://localhost:8000/images/'
+  BASE_URL: 'https://booking.dataghosthunter.com/',
+  BASE_URL_IMG: 'https://booking.dataghosthunter.com/storage/images/',
+  BASE_IMG: 'https://booking.dataghosthunter.com/images/'
 };
 /* harmony default export */ __webpack_exports__["default"] = (CONFIG);
 
