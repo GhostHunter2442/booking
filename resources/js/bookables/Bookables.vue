@@ -2,8 +2,6 @@
   <div>
 
 
-    <!-- <div v-if="loading">Data is loading...</div> -->
-
 
 
       <div v-if="loading">
@@ -13,53 +11,28 @@
           </div>
         </div>
 
-<div class="row">
-     <div class="d-flex col-12">
-           <div class="col-md-4">
 
-     <ContentLoader>
-  <rect x="0" y="0" rx="3" ry="3" width="250" height="10" />
-  <rect x="20" y="20" rx="3" ry="3" width="220" height="10" />
-  <rect x="20" y="40" rx="3" ry="3" width="170" height="10" />
-  <rect x="0" y="60" rx="3" ry="3" width="250" height="10" />
-  <rect x="20" y="80" rx="3" ry="3" width="200" height="10" />
-  <rect x="20" y="100" rx="3" ry="3" width="80" height="10" />
-
+<div class="row " v-for="row in 4" :key="'row' + row">
+  <div class="col-6 col-md-4  justify-content-between  mt-5" v-for="col in 3" :key="'col' + col">
+        <ContentLoader>
+  <rect x="0" y="0" rx="6" ry="6" width="350" height="20" />
+   <rect x="30" y="30" rx="6" ry="6" width="220" height="20" />
+   <rect x="40" y="60" rx="6" ry="6" width="300" height="20" />
+    <rect x="0" y="90" rx="6" ry="6" width="350" height="20" />
+      <rect x="0" y="160" rx="6" ry="6" width="350" height="20" />
 </ContentLoader>
-           </div>
 
-           <div class="col-md-4">
+  </div>
 
-     <ContentLoader>
-  <rect x="0" y="0" rx="3" ry="3" width="250" height="10" />
-  <rect x="20" y="20" rx="3" ry="3" width="220" height="10" />
-  <rect x="20" y="40" rx="3" ry="3" width="170" height="10" />
-  <rect x="0" y="60" rx="3" ry="3" width="250" height="10" />
-  <rect x="20" y="80" rx="3" ry="3" width="200" height="10" />
-  <rect x="20" y="100" rx="3" ry="3" width="80" height="10" />
-</ContentLoader>
-           </div>
-
-           <div class="col-md-4">
-
-     <ContentLoader>
-  <rect x="0" y="0" rx="3" ry="3" width="250" height="10" />
-  <rect x="20" y="20" rx="3" ry="3" width="220" height="10" />
-  <rect x="20" y="40" rx="3" ry="3" width="170" height="10" />
-  <rect x="0" y="60" rx="3" ry="3" width="250" height="10" />
-  <rect x="20" y="80" rx="3" ry="3" width="200" height="10" />
-  <rect x="20" y="100" rx="3" ry="3" width="80" height="10" />
-</ContentLoader>
-           </div>
-     </div>
 </div>
 
 
 
+  </div>
 
 
 
-      </div>
+
       <div v-else>
           <div class="row">
           <div class="col-md-6 mx-auto text-center mb-5 section-heading">
@@ -140,7 +113,7 @@ methods:{
 
                             setInterval(() => {
                                 this.loading= false;
-                            }, 1000);
+                            }, 1500);
 
                           });
     }

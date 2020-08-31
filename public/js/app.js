@@ -4423,33 +4423,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -4491,7 +4464,7 @@ __webpack_require__.r(__webpack_exports__);
 
         setInterval(function () {
           _this.loading = false;
-        }, 1000);
+        }, 1500);
       });
     }
   },
@@ -66486,238 +66459,90 @@ var render = function() {
     "div",
     [
       _vm.loading
-        ? _c("div", [
-            _vm._m(0),
-            _vm._v(" "),
-            _c("div", { staticClass: "row" }, [
-              _c("div", { staticClass: "d-flex col-12" }, [
-                _c(
+        ? _c(
+            "div",
+            [
+              _vm._m(0),
+              _vm._v(" "),
+              _vm._l(4, function(row) {
+                return _c(
                   "div",
-                  { staticClass: "col-md-4" },
-                  [
-                    _c("ContentLoader", [
-                      _c("rect", {
-                        attrs: {
-                          x: "0",
-                          y: "0",
-                          rx: "3",
-                          ry: "3",
-                          width: "250",
-                          height: "10"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("rect", {
-                        attrs: {
-                          x: "20",
-                          y: "20",
-                          rx: "3",
-                          ry: "3",
-                          width: "220",
-                          height: "10"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("rect", {
-                        attrs: {
-                          x: "20",
-                          y: "40",
-                          rx: "3",
-                          ry: "3",
-                          width: "170",
-                          height: "10"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("rect", {
-                        attrs: {
-                          x: "0",
-                          y: "60",
-                          rx: "3",
-                          ry: "3",
-                          width: "250",
-                          height: "10"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("rect", {
-                        attrs: {
-                          x: "20",
-                          y: "80",
-                          rx: "3",
-                          ry: "3",
-                          width: "200",
-                          height: "10"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("rect", {
-                        attrs: {
-                          x: "20",
-                          y: "100",
-                          rx: "3",
-                          ry: "3",
-                          width: "80",
-                          height: "10"
-                        }
-                      })
-                    ])
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "col-md-4" },
-                  [
-                    _c("ContentLoader", [
-                      _c("rect", {
-                        attrs: {
-                          x: "0",
-                          y: "0",
-                          rx: "3",
-                          ry: "3",
-                          width: "250",
-                          height: "10"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("rect", {
-                        attrs: {
-                          x: "20",
-                          y: "20",
-                          rx: "3",
-                          ry: "3",
-                          width: "220",
-                          height: "10"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("rect", {
-                        attrs: {
-                          x: "20",
-                          y: "40",
-                          rx: "3",
-                          ry: "3",
-                          width: "170",
-                          height: "10"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("rect", {
-                        attrs: {
-                          x: "0",
-                          y: "60",
-                          rx: "3",
-                          ry: "3",
-                          width: "250",
-                          height: "10"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("rect", {
-                        attrs: {
-                          x: "20",
-                          y: "80",
-                          rx: "3",
-                          ry: "3",
-                          width: "200",
-                          height: "10"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("rect", {
-                        attrs: {
-                          x: "20",
-                          y: "100",
-                          rx: "3",
-                          ry: "3",
-                          width: "80",
-                          height: "10"
-                        }
-                      })
-                    ])
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "col-md-4" },
-                  [
-                    _c("ContentLoader", [
-                      _c("rect", {
-                        attrs: {
-                          x: "0",
-                          y: "0",
-                          rx: "3",
-                          ry: "3",
-                          width: "250",
-                          height: "10"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("rect", {
-                        attrs: {
-                          x: "20",
-                          y: "20",
-                          rx: "3",
-                          ry: "3",
-                          width: "220",
-                          height: "10"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("rect", {
-                        attrs: {
-                          x: "20",
-                          y: "40",
-                          rx: "3",
-                          ry: "3",
-                          width: "170",
-                          height: "10"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("rect", {
-                        attrs: {
-                          x: "0",
-                          y: "60",
-                          rx: "3",
-                          ry: "3",
-                          width: "250",
-                          height: "10"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("rect", {
-                        attrs: {
-                          x: "20",
-                          y: "80",
-                          rx: "3",
-                          ry: "3",
-                          width: "200",
-                          height: "10"
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c("rect", {
-                        attrs: {
-                          x: "20",
-                          y: "100",
-                          rx: "3",
-                          ry: "3",
-                          width: "80",
-                          height: "10"
-                        }
-                      })
-                    ])
-                  ],
-                  1
+                  { key: "row" + row, staticClass: "row " },
+                  _vm._l(3, function(col) {
+                    return _c(
+                      "div",
+                      {
+                        key: "col" + col,
+                        staticClass:
+                          "col-6 col-md-4  justify-content-between  mt-5"
+                      },
+                      [
+                        _c("ContentLoader", [
+                          _c("rect", {
+                            attrs: {
+                              x: "0",
+                              y: "0",
+                              rx: "6",
+                              ry: "6",
+                              width: "350",
+                              height: "20"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("rect", {
+                            attrs: {
+                              x: "30",
+                              y: "30",
+                              rx: "6",
+                              ry: "6",
+                              width: "220",
+                              height: "20"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("rect", {
+                            attrs: {
+                              x: "40",
+                              y: "60",
+                              rx: "6",
+                              ry: "6",
+                              width: "300",
+                              height: "20"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("rect", {
+                            attrs: {
+                              x: "0",
+                              y: "90",
+                              rx: "6",
+                              ry: "6",
+                              width: "350",
+                              height: "20"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("rect", {
+                            attrs: {
+                              x: "0",
+                              y: "160",
+                              rx: "6",
+                              ry: "6",
+                              width: "350",
+                              height: "20"
+                            }
+                          })
+                        ])
+                      ],
+                      1
+                    )
+                  }),
+                  0
                 )
-              ])
-            ])
-          ])
+              })
+            ],
+            2
+          )
         : _c("div", [
             _vm._m(1),
             _vm._v(" "),
