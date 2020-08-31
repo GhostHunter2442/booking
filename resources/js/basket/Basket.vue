@@ -44,7 +44,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-6 form-group">
-                        <label for="street">Street</label>
+                        <label for="street">address</label>
                         <input
                             type="text"
                             class="form-control"
@@ -55,7 +55,7 @@
                          <v-errors :errors="errorFor('customer.street')"></v-errors>
                     </div>
                     <div class="col-md-6 form-group">
-                        <label for="city">City</label>
+                        <label for="city">Sub District</label>
                         <input
                             type="text"
                             class="form-control"
@@ -68,7 +68,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-6 form-group">
-                        <label for="country">Country</label>
+                        <label for="country">District</label>
                         <input
                             type="text"
                             class="form-control"
@@ -79,7 +79,7 @@
                          <v-errors :errors="errorFor('customer.country')"></v-errors>
                     </div>
                     <div class="col-md-4 form-group">
-                        <label for="state">State</label>
+                        <label for="state">Province</label>
                         <input
                             type="text"
                             class="form-control"
@@ -90,7 +90,7 @@
                          <v-errors :errors="errorFor('customer.state')"></v-errors>
                     </div>
                     <div class="col-md-2 form-group">
-                        <label for="zip">Zip</label>
+                        <label for="zip">Postcode</label>
                         <input
                             type="text"
                             class="form-control"

@@ -10,16 +10,22 @@ import FatalError from './shared/components/FatalError';
 import Success from './shared/components/Success';
 import ValidationErrors from './shared/components/ValidationErrors';
 import storeDefinition from "./store";
+import VueCarousel from '@chenfengyuan/vue-carousel';
+
+
+
 window.Vue = require("vue");
 
 Vue.use(VueRouter);
 Vue.use(Vuex);
+Vue.use(VueCarousel);
 
 Vue.filter("fromNow" ,value =>  moment(value).fromNow());
 Vue.component("star-rating",StarRating);
 Vue.component("fatal-error",FatalError);
 Vue.component("success",Success);
 Vue.component("v-errors",ValidationErrors);
+Vue.component('pagination', require('laravel-vue-pagination'));
 
 const store = new Vuex.Store(storeDefinition);
 

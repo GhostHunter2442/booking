@@ -11,7 +11,7 @@ class BookableController extends Controller
 {
     public function index(){
         return BookableIndexResource::collection(
-               Bookable::all()
+               Bookable::latest()->paginate(12)
         );
     }
     public function show($id){

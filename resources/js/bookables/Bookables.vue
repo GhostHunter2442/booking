@@ -10,46 +10,48 @@
           </div>
         </div>
            <div class="row" >
-                <div class="col-md-6 col-lg-4 mb-5 d-flex align-items-stretch"  v-for="(bookable, column) in bookables" :key="column">
+                <div class="col-md-6 col-lg-4 mb-5 d-flex align-items-stretch"  v-for="(bookable, column) in bookables.data" :key="column">
                   <BookableListItem v-bind="bookable" ></BookableListItem>
                 </div>
         </div>
+<!-- <pagination :data="bookables" :limit="limit"  @pagination-change-page="showalldata"></pagination> -->
+     <div class="row mt-5">
+          <div class="col-md-12 text-center">
+
+                <pagination :data="bookables" align="center" :limit="limit"  @pagination-change-page="showalldata"> </pagination>
 
 
-    </div>
-
-    <!-- <div v-if="loading">Data is loading...</div>
-    <div v-else>
-      <div class="row mb-4" v-for="row in rows" :key="'row' + row">
-        <div
-          class="col d-flex align-items-stretch"
-          v-for="(bookable, column) in bookablesInRow(row)"
-          :key="'row' + row + column"
-        >
-          <BookableListItem v-bind="bookable" ></BookableListItem>
-
+          </div>
         </div>
 
-        <div class="col" v-for="p in placeholdersInRow(row)" :key="'placeholder' + row + p"></div>
-      </div>
-    </div> -->
+    </div>
+    <HotelFeatures></HotelFeatures>
   </div>
 </template>
 
 <script>
 
 import BookableListItem from "./BookableListItem.vue";
+import HotelFeatures from "./Hotelfeatures";
 export default {
     components: {
-        BookableListItem
+        BookableListItem,
+        HotelFeatures
     },
     data() {
         return {
-            bookables: null,
+            bookables: {},
             loading: false,
-            columns:3
+            columns:3,
+             limit:3,
         };
     },
+     mounted(){
+
+    this.showalldata();
+
+},
+
 // computed:{
 //    rows(){
 //        return this.bookables === null ? 0
@@ -63,16 +65,18 @@ methods:{
     // placeholdersInRow(row){
     //     return this.columns - this.bookablesInRow(row).length;
     // }
-},
-    created() {
-        this.loading = true;
-
-         const request =  axios.get("/api/bookables")
+    showalldata(page){
+               this.loading = true;
+                 const request =  axios.get("/api/bookables?page="+page)
                          .then(resp => {
-                             this.bookables = resp.data.data;
+                             this.bookables = resp.data;
                             //  this.bookables.push({title:"x",description:"X"});
                              this.loading= false;
                           });
+    }
+},
+    created() {
+
 
     }
 };

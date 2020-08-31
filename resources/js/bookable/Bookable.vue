@@ -1,16 +1,19 @@
 <template>
     <div class="row">
         <div class="col-md-7 pb-4">
-            <div class="card ">
-                <div class="card-body">
+
+            <!-- <div class="card "> -->
+                <!-- <div class="card-body"> -->
+
                     <div v-if="!loading">
-                        <h2>{{ bookable.title }}</h2>
+                          <carousel :data="data"></carousel>
+                        <h2 class="mt-4">{{ bookable.title }}</h2>
                         <hr />
                         <article>{{ bookable.description }}</article>
                     </div>
                     <div v-else>Loading...</div>
-                </div>
-            </div>
+                <!-- </div> -->
+            <!-- </div> -->
 
             <review-list :bookable-id="this.$route.params.id"></review-list>
         </div>
@@ -69,17 +72,23 @@ import Availabality from "./Availability";
 import ReviewList from "./ReviewList";
 import PriceBreakdown from "./PriceBreakdown";
 import { mapState , mapGetters } from "vuex";
+ import api  from '../config';
 export default {
     components: {
         Availabality,
         ReviewList,
-        PriceBreakdown
+        PriceBreakdown,
+
     },
     data() {
         return {
             bookable: null,
             loading: false,
-            price: null
+            price: null,
+                data: [
+               '<img src="'+api.BASE_IMG+'img_1.jpg">',
+                '<img src="'+api.BASE_IMG+'img_2.jpg">',
+             ],
         };
     },
     created() {
